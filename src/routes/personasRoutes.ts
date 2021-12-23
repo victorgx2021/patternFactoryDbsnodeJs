@@ -1,6 +1,7 @@
 import { Router } from "express";
 
-import personasControler from "../controllers/personasController";
+import {DbFactory} from '../controllers/personasControl/factoryPersonaController';
+import {interfaceBD} from '../controllers/personasControl/interfaceBD';
 
 class PersonasRoutes{
 
@@ -11,11 +12,14 @@ class PersonasRoutes{
     }
 
     config():void{
-        this.router.get('/',personasControler.list);
-        this.router.get('/:id',personasControler.getOne);
-        this.router.post('/',personasControler.create);
-        this.router.delete('/:id',personasControler.delete);
-        this.router.put('/:id',personasControler.update);
+        let dbFactory: DbFactory = new DbFactory();
+        let dbController: interfaceBD = dbFactory.getDb("MySQL");
+
+        this.router.get('/',dbController.list);
+        this.router.get('/:id',dbController.getOne);
+        this.router.post('/',dbController.create);
+        this.router.delete('/:id',dbController.delete);
+        this.router.put('/:id',dbController.update);
     }
 }
 

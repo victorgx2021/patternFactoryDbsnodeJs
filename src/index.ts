@@ -23,7 +23,7 @@ class Server {
         this.app.use(express.urlencoded({extended: false}));
     }
 
-    routes():void{
+    routes():void{        
         this.app.use(indexRoutes);
         this.app.use('/v1/api/personas',personasRoutes);
     }
