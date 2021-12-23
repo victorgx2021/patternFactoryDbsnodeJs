@@ -2,7 +2,6 @@ import express, {Application} from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
 
-import indexRoutes from './routes/indexRoutes';
 import personasRoutes from './routes/personasRoutes';
 
 class Server {
@@ -24,7 +23,6 @@ class Server {
     }
 
     routes():void{        
-        this.app.use(indexRoutes);
         this.app.use('/v1/api/personas',personasRoutes);
     }
 
