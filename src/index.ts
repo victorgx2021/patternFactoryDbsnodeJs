@@ -2,6 +2,8 @@ import express, {Application} from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
 
+import './controllers/personasControl/dbSQL_Server/connection';
+
 import personasRoutes from './routes/personasRoutes';
 
 class Server {
