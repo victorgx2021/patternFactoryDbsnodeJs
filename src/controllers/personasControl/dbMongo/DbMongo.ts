@@ -1,8 +1,21 @@
 import {Request, Response, text} from 'express';
-import pool from './database';
+//import {connect,mongoose} from './database';
+import './database';
+import Persona from './models/persona';
 
+export class PersonasControllerMongoDb{
+    public async create (req:Request, res:Response){
 
-export class PersonasControler{
+        const persona = new Persona(req.body);
+        //const pool = await connect();
+        //await persona.save();
+        const personaGuardada = await persona.save();
+        console.log(personaGuardada);
+        //await pool.query('INSERT INTO persona set ?',[req.body]);
+        res.json({text: 'person saved'});
+    }
+}
+/*export class PersonasControler{
     public async list (req: Request,res: Response){
         const personas = await pool.query('SELECT * FROM persona');
         res.json(personas);
@@ -33,7 +46,4 @@ export class PersonasControler{
         await pool.query('UPDATE persona set ? WHERE id = ?',[req.body,id]);
         res.json({message: 'The person was updated'});
     }
-}
-
-//const personasControler =  new PersonasControler();
-//export default personasControler;
+}*/

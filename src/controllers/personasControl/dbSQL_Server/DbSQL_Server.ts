@@ -1,16 +1,6 @@
 import {Request, Response} from 'express'
 import {getConnection, sql} from './connection';
 
-//const pool = getConnection();
-
-/*export const getProducts = async (req,res) => {
-    const pool = await getConnection();
-    const result = await pool?.request().query('SELECT * FROM persona');
-    console.log(result);
-
-    res.json("Personas");
-}*/
-
 export class PersonasControllerSQL_Server{
     public async list (req: Request,res: Response){
         const pool = await getConnection();
