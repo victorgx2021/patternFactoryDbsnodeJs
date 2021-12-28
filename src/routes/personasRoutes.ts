@@ -13,7 +13,8 @@ class PersonasRoutes{
 
     config():void{
         let dbFactory: DbFactory = new DbFactory();
-        let dbController: interfaceBD = dbFactory.getDb("MySQL");
+        //let dbController: interfaceBD = dbFactory.getDb("MySQL");
+        let dbController: interfaceBD = dbFactory.getDb("SQL_Server");
 
         this.router.get('/',dbController.list);
         this.router.get('/:id',dbController.getOne);

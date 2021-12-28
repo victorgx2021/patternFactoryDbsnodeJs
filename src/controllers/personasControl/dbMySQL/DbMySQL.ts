@@ -1,5 +1,7 @@
 import {Request, Response, text} from 'express';
 import pool from './database';
+//import pool from '../dbSQL_Server/connection';
+
 
 export class PersonasControler{
     public async list (req: Request,res: Response){
