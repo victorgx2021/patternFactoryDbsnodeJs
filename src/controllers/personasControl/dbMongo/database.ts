@@ -1,26 +1,16 @@
 import mongoose from 'mongoose';
 
-const URI = 'mongodb://127.0.0.1:27017/personas';
+import config from './config';
 
-(async() => {
+mongoose.connect(config.DB.URI);
 
-    try{
-        const pool = await mongoose.connect(URI);
-    console.log('DB connected to', pool.connection.name);
-    }catch(error){
-        console.log(error);
-    }
-})()
+const connection = mongoose.connection;
 
-/*export async function connect() {
-    
-    try{
-        const pool = await mongoose.connect(URI);
-        return pool;
-    }
-    catch(err){
-        console.log(err);
-    }
-}
+connection.once('open', () => {
+    console.log('Mongodb connection stablished');
+});
 
-export {mongoose};*/
+connection.on('error', err => {
+    console.log(err);
+    process.exit(0);
+})

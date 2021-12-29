@@ -3,7 +3,7 @@ import morgan from 'morgan';
 import cors from 'cors';
 
 //import './controllers/personasControl/dbSQL_Server/connection';
-import './controllers/personasControl/dbMongo/database';
+//import './controllers/personasControl/dbMongo/database';
 //connect();
 import personasRoutes from './routes/personasRoutes';
 
